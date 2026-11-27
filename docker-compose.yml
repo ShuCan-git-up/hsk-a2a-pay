@@ -1,0 +1,14 @@
+# Single container. Secrets come from .env (never committed). See .env.example.
+name: hsk-a2a-pay
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE:-Dockerfile}
+    image: hsk-a2a-pay:local
+    container_name: hsk-a2a-pay
+    restart: unless-stopped
+    env_file: .env
+    mem_limit: 384m
+    ports:
+      - "${HOST_PORT:-8080}:8080"

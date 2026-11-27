@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HSK A2A Pay · Agent payments on HashKey Chain via HSP</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">⇄</span> HSK A2A Pay</div>
+  <div class="tag">Agent-to-agent payments &amp; settlement on HashKey Chain · HSP (HashKey Settlement Platform)</div>
+</header>
+<main>
+  <section class="card" id="status">
+    <h2>System</h2>
+    <div id="statusBody" class="grid">Loading…</div>
+  </section>
+
+  <section class="card">
+    <h2>Run an A2A purchase</h2>
+    <p class="muted">The <b>Payment Agent</b> buys a live wallet insight from the <b>Wallet Insight Agent</b>:
+      agent card → signed terms → spend policy → HSP <code>create_order</code> → <code>prepare_payment</code> →
+      signing firewall → <b>your approval</b> → EIP-712 signature → <code>finalize_payment</code> → <b>your approval</b> →
+      <code>submit_payment</code> → <code>query_payment</code> → receiver re-verifies with HSP → on-chain receipt → delivery.</p>
+    <form id="startForm" class="row">
+      <input id="target" placeholder="Wallet to analyse (0x…)" value="0x5ec8f0e40B06A98C12e961F77435bDabDF421E9d" spellcheck="false">
+      <button type="submit">Start purchase</button>
+    </form>
+  </section>
+
+  <section id="runs"></section>
+</main>
+<footer>Contract: <span id="footContract">—</span> · <a href="https://github.com/ShuCan-git-up/hsk-a2a-pay" target="_blank">GitHub</a></footer>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+hsk:
+  chain:
+    rpc-url: ${HSK_RPC_URL:https://testnet.hsk.xyz}
+    chain-id: ${HSK_CHAIN_ID:133}
+    explorer-url: ${HSK_EXPLORER_URL:https://testnet-explorer.hsk.xyz}
+    contract-address: ${CONTRACT_ADDRESS:}
+    operator-private-key: ${OPERATOR_PRIVATE_KEY:}
+    insight-rpc-url: ${INSIGHT_RPC_URL:https://mainnet.hsk.xyz}
+    insight-chain-id: ${INSIGHT_CHAIN_ID:177}
+  token:
+    network: ${HSP_NETWORK:hashkey-testnet}
+    address: ${TOKEN_ADDRESS:0x8FE3cB719Ee4410E236Cd6b72ab1fCDC06eF53c6}
+    symbol: ${TOKEN_SYMBOL:USDC}
+    decimals: ${TOKEN_DECIMALS:6}
+    protocol: ${TOKEN_PROTOCOL:eip3009}
+  hsp:
+    mode: ${HSP_MODE:mock}
+    mcp-url: ${HSP_MCP_URL:https://mcp-qa.hashkeymerchant.com/}
+    merchant-name: ${HSP_MERCHANT_NAME:HSK A2A Pay}
+    poll-seconds: ${HSP_POLL_SECONDS:15}
+    rest-base-url: ${HSP_REST_BASE_URL:https://merchant-qa.hashkeymerchant.com}
+    app-key: ${HSP_APP_KEY:}
+    app-secret: ${HSP_APP_SECRET:}
+    merchant-private-key-pem: ${HSP_MERCHANT_PRIVATE_KEY_PEM:}
+  receiver:
+    agent-name: ${RECEIVER_AGENT_NAME:HashKey Wallet Insight Agent}
+    pay-to: ${RECEIVER_PAY_TO:}
+    signing-private-key: ${RECEIVER_SIGNING_PRIVATE_KEY:}
+    price-usd: ${RECEIVER_PRICE_USD:0.10}
+    public-base-url: ${PUBLIC_BASE_URL:}
+  payer:
+    private-key: ${PAYER_PRIVATE_KEY:}
+    receiver-agent-url: ${RECEIVER_AGENT_URL:}
+    max-per-payment-usd: ${PAYER_MAX_PER_PAYMENT_USD:1.00}
+    daily-cap-usd: ${PAYER_DAILY_CAP_USD:5.00}
+    allowed-pay-to: ${PAYER_ALLOWED_PAY_TO:}
+    auto-approve: ${PAYER_AUTO_APPROVE:false}

@@ -1,0 +1,10 @@
+# Runtime-only image: use a jar built with `mvn -f backend/pom.xml package` (for small servers).
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+RUN apk add --no-cache wget && addgroup -S app && adduser -S app -G app
+COPY backend/target/hsk-a2a-pay.jar /app/app.jar
+USER app
+ENV JAVA_TOOL_OPTIONS="-Xms96m -Xmx224m -XX:+UseSerialGC -XX:MaxMetaspaceSize=128m"
+EXPOSE 8080
+HEALTHCHECK --interval=15s --timeout=3s --start-period=40s --retries=8 CMD wget -qO- http://127.0.0.1:8080/actuator/health || exit 1
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
