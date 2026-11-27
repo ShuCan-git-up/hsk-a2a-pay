@@ -1,3 +1,4 @@
+# Copy to .github/workflows/ci.yml to enable GitHub Actions.
 name: ci
 on: [push, pull_request]
 jobs:

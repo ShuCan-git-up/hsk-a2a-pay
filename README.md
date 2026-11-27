@@ -21,6 +21,20 @@ its own, anchors a settlement receipt in the `A2ASettlement` contract on HashKey
 | Backend | Java 21 · Spring Boot 3.5 · web3j · BouncyCastle |
 | UI | `frontend/` (served by the backend) — run timeline, approvals, explorer links |
 
+## Live deployment (HashKey testnet 133)
+
+| | |
+|---|---|
+| `A2ASettlement` | [`0xd72242774301dbc750372d4FF37ebD05f16D7200`](https://testnet-explorer.hskchain.net/address/0xd72242774301dbc750372d4FF37ebD05f16D7200) |
+| Deploy tx | [`0xbbbc9214…a93027`](https://testnet-explorer.hskchain.net/tx/0xbbbc921421216ef9c315035bf9c7d5ffff6a93027736f334402537f75cd99ec1) (1,636,343 gas) |
+| Demo order `publishTerms` | [`0x6d13ac1b…dd7ae`](https://testnet-explorer.hskchain.net/tx/0x6d13ac1bb4eccc622822adf3f0558d9fb26a67985be31a9d9bf1090a0b0dd7ae) |
+| Demo order `recordHspSettlement` | [`0x50a40c18…82b7`](https://testnet-explorer.hskchain.net/tx/0x50a40c1892b6a5b8f9ee93a4a3e21ec1e2fe007d3b4337c64675d01451ae82b7) |
+| Live demo | https://hsk.43-167-176-164.sslip.io |
+
+The demo currently runs with **simulated HSP** (pending HSP QA IP allowlisting): the on-chain terms and receipts
+above are real testnet transactions, but the USDC transfer itself was simulated (receipt `hspPaymentRef` is
+`keccak256("SIMULATED:" + payment_request_id)` and `settlementTx` is zero). Mainnet is not deployed yet.
+
 ## Why it fits the track
 
 - **Payment terms come from the receiving agent** (signed agent card + EIP-191 signed `PaymentTerms`).
@@ -106,6 +120,12 @@ See [docs/architecture.md](docs/architecture.md).
 6. **人工确认第一次** → 钱包本地签名 → `finalize_payment` 生成 Payment Mandate。
 7. **人工确认第二次** → `submit_payment` 交给 HSP Gateway 上链转账 → 每 15 秒 `query_payment`。
 8. 收款 Agent 自己再向 HSP 查询核实（不信付款方的说法），通过后写链上收据 `recordHspSettlement`，再交付结果。
+
+### 测试网部署（133）
+
+- 合约 `A2ASettlement`：[`0xd72242774301dbc750372d4FF37ebD05f16D7200`](https://testnet-explorer.hskchain.net/address/0xd72242774301dbc750372d4FF37ebD05f16D7200)
+- 演示订单的链上记录：上面英文表格里的 `publishTerms` 和 `recordHspSettlement` 两笔交易。
+- 目前 HSP 还是模拟模式（等 HSP 加 IP 白名单）：链上条款和收据是真实测试网交易，但 USDC 转账本身是模拟的。主网尚未部署。
 
 ### 本地快速体验（不需要私钥和资金）
 

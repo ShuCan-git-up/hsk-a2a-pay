@@ -25,7 +25,7 @@ public class HskProperties {
         /** HashKey Chain RPC. Testnet: https://testnet.hsk.xyz (133). Mainnet: https://mainnet.hsk.xyz (177). */
         private String rpcUrl = "https://testnet.hsk.xyz";
         private long chainId = 133;
-        private String explorerUrl = "https://testnet-explorer.hsk.xyz";
+        private String explorerUrl = "https://testnet-explorer.hskchain.net";
         /** A2ASettlement contract. Blank = on-chain anchoring disabled. */
         private String contractAddress = "";
         /** Operator key that sends publishTerms / recordHspSettlement. Env only. */

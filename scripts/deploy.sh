@@ -4,7 +4,7 @@
 set -euo pipefail
 NET="${1:-testnet}"
 case "$NET" in
-  testnet) RPC=https://testnet.hsk.xyz; CHAIN=133; EXPLORER=https://testnet-explorer.hsk.xyz ;;
+  testnet) RPC=https://testnet.hsk.xyz; CHAIN=133; EXPLORER=https://testnet-explorer.hskchain.net ;;
   mainnet) RPC=https://mainnet.hsk.xyz; CHAIN=177; EXPLORER=https://hashkey.blockscout.com ;;
   local)   RPC=http://127.0.0.1:8545;  CHAIN=$(cast chain-id --rpc-url http://127.0.0.1:8545); EXPLORER=local ;;
   *) echo "usage: $0 testnet|mainnet|local"; exit 1 ;;

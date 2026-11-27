@@ -2,7 +2,7 @@ const $ = (s) => document.querySelector(s);
 let status = null;
 const short = (a) => a && a.length > 14 ? a.slice(0, 8) + '…' + a.slice(-6) : (a || '—');
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const explorer = () => status?.chain?.contractUrl ? status.chain.contractUrl.split('/address/')[0] : 'https://testnet-explorer.hsk.xyz';
+const explorer = () => status?.chain?.contractUrl ? status.chain.contractUrl.split('/address/')[0] : 'https://testnet-explorer.hskchain.net';
 const txLink = (h) => h && /^0x[0-9a-fA-F]{64}$/.test(h) && !/^0x0+$/.test(h) ? `<a class="mono" target="_blank" href="${explorer()}/tx/${h}">${short(h)}</a>` : '<span class="muted">—</span>';
 const addrLink = (a) => a ? `<a class="mono" target="_blank" href="${explorer()}/address/${a}">${short(a)}</a>` : '—';
 

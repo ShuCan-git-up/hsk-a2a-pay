@@ -12,7 +12,7 @@ hsk:
   chain:
     rpc-url: ${HSK_RPC_URL:https://testnet.hsk.xyz}
     chain-id: ${HSK_CHAIN_ID:133}
-    explorer-url: ${HSK_EXPLORER_URL:https://testnet-explorer.hsk.xyz}
+    explorer-url: ${HSK_EXPLORER_URL:https://testnet-explorer.hskchain.net}
     contract-address: ${CONTRACT_ADDRESS:}
     operator-private-key: ${OPERATOR_PRIVATE_KEY:}
     insight-rpc-url: ${INSIGHT_RPC_URL:https://mainnet.hsk.xyz}
